@@ -11,6 +11,14 @@ public class PlayerScript : MonoBehaviour
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
 
+    private SpriteRenderer spriteRenderer;
+    private float squashThresholdMultiplier = 0.75f; // Determines how small should an enemy be for killing via stomp mechanic
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
         if (isNegativeScaling)
@@ -31,7 +39,17 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.gameObject.SetActive(false);
+            float enemyHeight = collision.gameObject.GetComponent<CapsuleCollider2D>().bounds.size.y;
+            
+            float playerHeight = spriteRenderer.bounds.size.y;
+
+            Debug.Log("Enemy: " + enemyHeight);
+            Debug.Log("Player: " + playerHeight * squashThresholdMultiplier);
+            if (playerHeight * squashThresholdMultiplier >= enemyHeight)
+            {
+                collision.gameObject.SetActive(false);
+            }
+            
         }
     }
 
