@@ -12,11 +12,16 @@ public class BulletScript : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calculate the direction from the bullet to the mouse position
-        Vector2 direction = (mousePosition - transform.position).normalized;
+        Vector2 direction = mousePosition - transform.position;
 
         // Set the bullet's velocity to move in the direction of the mouse position
-        rb.velocity = direction * speed;
-        //rb.velocity = rb.velocity.normalized;
+        rb.velocity = direction.normalized * speed;
+        Debug.Log(rb.velocity);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -104,13 +104,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerMouseDiff = mousePosition - transform.position;
+
+        if (isFacingRight && playerMouseDiff.x < 0f || !isFacingRight && playerMouseDiff.x > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+
+
     }
 
     private IEnumerator Dash()
