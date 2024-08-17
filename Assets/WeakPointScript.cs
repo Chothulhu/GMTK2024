@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeakPointScript : MonoBehaviour
 {
-    [SerializeField] PlayerScript playerScript;
+    [SerializeField] EnemyScript enemyScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +20,9 @@ public class WeakPointScript : MonoBehaviour
 
     private void invokeScale() { 
      
-        if (playerScript != null)
+        if (enemyScript != null)
         {
-            playerScript.TriggerScaling(false);
+            enemyScript.TriggerScaling(false);
         }
     
     }

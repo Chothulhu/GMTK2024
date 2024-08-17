@@ -12,12 +12,11 @@ public class WeaponScript : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) {
-            shoot();
+            Shoot();
         }
     }
 
-    void shoot() {
+    void Shoot() {
         Instantiate(bullletPrefab, firePoint.position, firePoint.rotation);
-
     }
 }

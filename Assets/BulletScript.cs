@@ -16,15 +16,16 @@ public class BulletScript : MonoBehaviour
 
         // Set the bullet's velocity to move in the direction of the mouse position
         rb.velocity = direction * speed;
+        //rb.velocity = rb.velocity.normalized;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //zameni za enemy kad bude imao nemoj covek sam sebe da puca
-        var enemy = collision.GetComponent<PlayerScript>();
+
+        var enemy = collision.GetComponent<EnemyScript>();
         if (enemy != null)
         {
-            enemy.takeDamage(damage);
+            enemy.TakeDamage(damage);
              Destroy(gameObject);
         }
        
