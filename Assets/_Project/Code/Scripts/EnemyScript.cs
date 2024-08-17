@@ -1,23 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour, DamagableEntity
 {
-    private int health;
+    [SerializeField] int health;
     private int maxHealth;
 
     private float height;
 
-    [SerializeField] private int scaleSpeed = 1; // Speed at which the scale increases
+    [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
     [SerializeField] private int scaleLast = 10;
+    [SerializeField] private float scaleMin = 0.4f;
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
 
     private void Update()
     {
-        if (isNegativeScaling)
+        if (isNegativeScaling && (transform.localScale.x > scaleMin && transform.localScale.y > scaleMin && transform.localScale.z > scaleMin))
         {
             // Decrease the scale by X unit per second
             transform.localScale += Vector3.one * -scaleSpeed * Time.deltaTime;
