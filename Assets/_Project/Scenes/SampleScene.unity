@@ -899,7 +899,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6950008, y: 0, z: -10}
+  m_LocalPosition: {x: -1.6949998, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1125,8 +1125,8 @@ Transform:
   m_GameObject: {fileID: 738096350}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1406, y: -0.0625, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.093, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.6718, y: 0.7656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2105664372}
@@ -1965,6 +1965,7 @@ GameObject:
   - component: {fileID: 1217890991}
   - component: {fileID: 1217890996}
   - component: {fileID: 1217890995}
+  - component: {fileID: 1217890997}
   m_Layer: 0
   m_Name: GoomGuy
   m_TagString: Untagged
@@ -2155,6 +2156,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 332835182}
+--- !u!95 &1217890997
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217890990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9444c342d4297a64c8a7aa84d4eb4c22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1233445883
 GameObject:
   m_ObjectHideFlags: 0
