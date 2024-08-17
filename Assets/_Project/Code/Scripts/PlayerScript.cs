@@ -5,14 +5,33 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
 
-    [SerializeField] private int health = 100;
+    private int currentHealth = 100;
+    [SerializeField] private int maxHealth = 100;
 
     private SpriteRenderer spriteRenderer;
     private float squashThresholdMultiplier = 0.75f; // Determines how small should an enemy be for killing via stomp mechanic
 
+    [SerializeField] private HealthBar healthBar;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+    }
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    private void Update()
+    {
+        // TEST
+        /*if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(10);
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,8 +54,9 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health < 0)
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
         {
             Die();
         }
