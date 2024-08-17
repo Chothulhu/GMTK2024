@@ -1,21 +1,22 @@
+using System;
 using UnityEngine;
 
-public class WeakPointScript : MonoBehaviour
+public class WeakPointScript : MonoBehaviour, DamagableEntity
 {
     [SerializeField] EnemyScript enemyScript;
 
-
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        invokeScale();
+        InvokeScale();
+        
     }
 
-    private void invokeScale() { 
-     
+    private void InvokeScale() {
+
         if (enemyScript != null)
         {
             enemyScript.TriggerScaling(false);
         }
-    
+
     }
 }
