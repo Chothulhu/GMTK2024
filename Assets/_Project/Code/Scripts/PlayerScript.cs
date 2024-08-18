@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, DamagableEntity
 {
 
     private int currentHealth = 100;
@@ -62,6 +62,7 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Udaren batko");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)

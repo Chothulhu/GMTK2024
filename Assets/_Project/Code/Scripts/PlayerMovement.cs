@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         var enemy = collision.GetComponent<DamagableEntity>();
-        if (enemy != null)
+        if (enemy != null && isDashing)
         {
             enemy.TakeDamage(dashDamage);
         }

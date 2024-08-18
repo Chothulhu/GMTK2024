@@ -35,10 +35,15 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     private void Update()
     {
         //MOVEMENT
-        float step = speed * Time.deltaTime;
-        Vector3 newPos = transform.position;
-        newPos.x = Mathf.MoveTowards(newPos.x, target.position.x, step);
-        transform.position = newPos;
+        if(target != null)
+        {
+            float step = speed * Time.deltaTime;
+            Vector3 newPos = transform.position;
+            newPos.x = Mathf.MoveTowards(newPos.x, target.position.x, step);
+            transform.position = newPos;
+
+        }
+ 
 
 
         // SCALING TRIGGERS
