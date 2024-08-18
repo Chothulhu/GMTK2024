@@ -28,15 +28,16 @@ public class EnemyCombatScript : MonoBehaviour
         if (entity != null)
         {
             Debug.Log("Te Aknem poziv!");
+            // Animator
+            if (animator != null)
+                animator.SetTrigger("Attack");
         }
 
     }
 
     void Attack() {
 
-        // Animator
-        if (animator != null)
-        animator.SetTrigger("Attack");
+        
 
         // Detect damagable entities
         Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layerToDamage);

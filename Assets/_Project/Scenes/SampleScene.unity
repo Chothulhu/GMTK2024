@@ -1770,63 +1770,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 844733589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1116976937
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747068664826382718, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
-      propertyPath: m_Name
-      value: theGoobster
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
 --- !u!1 &1143054502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +1943,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxMultiplier: 0.3
+--- !u!1001 &1214750167
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.531392
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8630034
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232961355948192837, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747068664826382718, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
+      propertyPath: m_Name
+      value: theGoobster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98b3d66fa2706ff4da9521be83222e2a, type: 3}
 --- !u!1 &1217890990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,4 +3000,4 @@ SceneRoots:
   - {fileID: 879316771}
   - {fileID: 961857346}
   - {fileID: 1235846381}
-  - {fileID: 1116976937}
+  - {fileID: 1214750167}

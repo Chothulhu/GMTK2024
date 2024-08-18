@@ -236,7 +236,7 @@ MonoBehaviour:
   layerToDamage:
     serializedVersion: 2
     m_Bits: 64
-  damage: 1
+  damage: 20
   attackAnimationDelay: 0
 --- !u!95 &5771806366188113323
 Animator:
