@@ -7,6 +7,7 @@ public class EnemyCombatScript : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] LayerMask layerToDamage;
     [SerializeField] private int damage;
+    [SerializeField] private float attackAnimationDelay;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +28,11 @@ public class EnemyCombatScript : MonoBehaviour
         if (entity != null)
         {
             Debug.Log("Te Aknem poziv!");
-            // Delay for animation
-            Attack();
         }
 
     }
 
     void Attack() {
-
-        
 
         // Animator
         if (animator != null)
