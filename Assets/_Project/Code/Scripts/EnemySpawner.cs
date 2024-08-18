@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         } else
         {
             var rand = Random.Range(0, spawnPositions.Length);
-            ObjectPoolManager.SpawnObject(lizardEnemy, spawnPositions[rand].position, Quaternion.identity);
+            ObjectPoolManager.SpawnObject(lizardEnemy, spawnPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
             lizardSpawnCooldown = startLizardSpawnCooldown;
         }
 
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             var rand = Random.Range(0, spawnPositions.Length);
-            ObjectPoolManager.SpawnObject(bigEnemy, spawnPositions[rand].position, Quaternion.identity);
+            ObjectPoolManager.SpawnObject(bigEnemy, spawnPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
             bigEnemySpawnCooldown = startBigEnemySpawnCooldown;
         }
     }
