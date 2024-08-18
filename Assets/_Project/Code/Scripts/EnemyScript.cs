@@ -93,8 +93,8 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
 
     private void Die()
     {
-        GameObject.Instantiate(itemToDrop, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity);
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 
 
