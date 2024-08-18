@@ -6,7 +6,9 @@ public class WeaponScript : MonoBehaviour
 {
 
     public Transform firePoint;
-    public GameObject bullletPrefab;
+    public GameObject bulletPrefab;
+    [SerializeField] private int bulletCount;
+    private int maxBullets = 5;
 
     // Weapon Rotation
     private Vector3 mousePosition;
@@ -32,12 +34,28 @@ public class WeaponScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
 
         if (Input.GetButtonDown("Fire1")) {
-            Shoot();
+            if (bulletCount > 0)
+            {
+                bulletCount--;
+                Shoot();  
+            } else
+            {
+                //play Jamming sound
+            }
+            
         }
     }
 
     void Shoot() {
-        Instantiate(bullletPrefab, firePoint.position, firePoint.rotation);
+        ObjectPoolManager.SpawnObject(bulletPrefab, firePoint.position, firePoint.rotation, ObjectPoolManager.PoolType.GameObject);
+    }
+
+    public void CollectAmmo()
+    {
+        if (bulletCount < maxBullets)
+        {
+            bulletCount++;
+        }       
     }
 
     //shhhh
@@ -47,6 +65,8 @@ public class WeaponScript : MonoBehaviour
         if (playerMouseDiff.x > 0) return -90f;
         else return 90f;
     }
+
+
 
 
 }

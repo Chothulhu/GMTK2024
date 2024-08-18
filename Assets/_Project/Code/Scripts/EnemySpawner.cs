@@ -27,7 +27,8 @@ public class EnemySpawner : MonoBehaviour
         if (lizardSpawnCooldown > 0)
         {
             lizardSpawnCooldown -= Time.deltaTime;
-        } else
+        }
+        else
         {
             var rand = Random.Range(0, spawnPositions.Length);
             ObjectPoolManager.SpawnObject(lizardEnemy, spawnPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);

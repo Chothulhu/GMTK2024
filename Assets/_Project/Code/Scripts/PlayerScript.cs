@@ -10,13 +10,15 @@ public class PlayerScript : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private float squashThresholdMultiplier = 0.75f; // Determines how small should an enemy be for killing via stomp mechanic
+    [SerializeField] private WeaponScript weaponScript;
+    private Rigidbody2D rb;
 
     [SerializeField] private HealthBar healthBar;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -44,11 +46,17 @@ public class PlayerScript : MonoBehaviour
 
             Debug.Log("Enemy: " + enemyHeight);
             Debug.Log("Player: " + playerHeight * squashThresholdMultiplier);
-            if (playerHeight * squashThresholdMultiplier >= enemyHeight)
+            if (playerHeight * squashThresholdMultiplier >= enemyHeight && rb.velocity.y < 0)
             {
-                collision.gameObject.SetActive(false);
-            }
-            
+                Debug.Log("hi pookie");
+                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
+            } 
+        }
+
+        if (collision.tag == "Ammo")
+        {    
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+            weaponScript.CollectAmmo();
         }
     }
 
@@ -58,7 +66,7 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            Die();
+            Die(); // death scene
         }
     }
 

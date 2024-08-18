@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Globals
   - GameMaster
+  - Ammo
   layers:
   - Default
   - TransparentFX

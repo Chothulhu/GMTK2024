@@ -60,6 +60,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         health -= damage;
         if (health <= 0)
         {
+            Debug.Log("Hp 0: " + gameObject.name);
             Die();
         }
     }
@@ -91,10 +92,12 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         isPositiveScaling = false;
     }
 
-    private void Die()
+    public void Die()
     {
-        ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity);
+        Debug.Log("DIED: " + gameObject.name);
+        ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         ObjectPoolManager.ReturnObjectToPool(gameObject);
+
     }
 
 

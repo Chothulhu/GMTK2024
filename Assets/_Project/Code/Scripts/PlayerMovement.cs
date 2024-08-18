@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private Rigidbody2D rb;
+    private Animator anim;
     private float baseGravityScale;
+    private GameObject weapon;
 
     [SerializeField] private float speed = 8f;
 
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         baseGravityScale = rb.gravityScale;
         hitBox = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        weapon = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -67,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && canDash)
         {
+            weapon.SetActive(false);
+            anim.SetBool("isDashing", true);
             StartCoroutine(Dash());
         }
 
@@ -88,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isForceDown)
         {
+            hitBox.isTrigger = true;
             rb.gravityScale = slamForce;
         }
 
@@ -95,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isForceDown = false;
             rb.gravityScale = baseGravityScale;
+            hitBox.isTrigger = false;
         }
     }
 
@@ -123,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        
+        
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
@@ -130,11 +140,14 @@ public class PlayerMovement : MonoBehaviour
         hitBox.isTrigger = true;
         rb.velocity = new Vector2(transform.localScale.x * dashingForce, 0f);
         yield return new WaitForSeconds(dashingTime);
+        anim.SetBool("isDashing", false);
         hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        weapon.SetActive(true);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

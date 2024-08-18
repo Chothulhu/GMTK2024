@@ -30,6 +30,7 @@ public class BulletScript : MonoBehaviour
         var enemy = collision.GetComponent<DamagableEntity>();
         if (enemy != null)
         {
+            Debug.Log("TONS OF DMG");
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
