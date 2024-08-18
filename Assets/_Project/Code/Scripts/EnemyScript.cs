@@ -6,10 +6,14 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour, DamagableEntity
 {
-    [SerializeField] int health;
-    private int maxHealth;
+    private int health;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private float speed;
+    private GameObject globals;
+    private Transform target;
 
-    private float height;
+    [SerializeField] private GameObject itemToDrop;
+
 
     [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
     [SerializeField] private int scaleLast = 10;
@@ -17,8 +21,27 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
 
+    private void Awake()
+    {
+        globals = GameObject.FindGameObjectWithTag("GameMaster").gameObject;
+        target = globals.GetComponent<GlobalsScript>().playerPosition;
+    }
+
+    private void Start()
+    {
+        health = maxHealth;
+    }
+
     private void Update()
     {
+        //MOVEMENT
+        float step = speed * Time.deltaTime;
+        Vector3 newPos = transform.position;
+        newPos.x = Mathf.MoveTowards(newPos.x, target.position.x, step);
+        transform.position = newPos;
+
+
+        // SCALING TRIGGERS
         if (isNegativeScaling && (transform.localScale.x > scaleMin && transform.localScale.y > scaleMin && transform.localScale.z > scaleMin))
         {
             // Decrease the scale by X unit per second
@@ -70,6 +93,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
 
     private void Die()
     {
+        GameObject.Instantiate(itemToDrop, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

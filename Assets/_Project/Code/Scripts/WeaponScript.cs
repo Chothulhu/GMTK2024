@@ -11,8 +11,15 @@ public class WeaponScript : MonoBehaviour
     // Weapon Rotation
     private Vector3 mousePosition;
     private float angle;
-    [SerializeField] private Transform playerTransform;
-    
+    private GameObject globals;
+    private Transform playerTransform;
+
+    private void Awake()
+    {
+        globals = GameObject.FindGameObjectWithTag("GameMaster").gameObject;
+        playerTransform = globals.GetComponent<GlobalsScript>().playerPosition;
+    }
+
 
     // Update is called once per frame
     void Update()

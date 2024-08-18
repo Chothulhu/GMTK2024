@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingForce = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 0f;
+    [SerializeField] private BoxCollider2D hitBox;
+    [SerializeField] private int dashDamage = 100;
 
     //GROUND SLAM
     [SerializeField] private bool isForceDown;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         baseGravityScale = rb.gravityScale;
+        hitBox = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -124,11 +127,24 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        hitBox.isTrigger = true;
         rb.velocity = new Vector2(transform.localScale.x * dashingForce, 0f);
         yield return new WaitForSeconds(dashingTime);
+        hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        var enemy = collision.GetComponent<DamagableEntity>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(dashDamage);
+        }
+
     }
 }
