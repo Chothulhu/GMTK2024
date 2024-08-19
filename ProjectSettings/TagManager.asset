@@ -9,6 +9,8 @@ TagManager:
   - Globals
   - GameMaster
   - Ammo
+  - Boss
+  - Shockwave
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
+  - Boss
+  - Enemy
+  - Shockwave
   - 
   - 
   - 

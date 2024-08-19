@@ -22,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
     //DASH
     [SerializeField] private bool canDash = true;
-    [SerializeField] private bool isDashing;
+    [HideInInspector] public bool isDashing;
     [SerializeField] private float dashingForce = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 0f;
     [SerializeField] private BoxCollider2D hitBox;
-    [SerializeField] private int dashDamage = 100;
+
 
     //GROUND SLAM
     [SerializeField] private bool isForceDown;
@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
 
         var enemy = collision.GetComponent<DamagableEntity>();
@@ -159,5 +159,5 @@ public class PlayerMovement : MonoBehaviour
             enemy.TakeDamage(dashDamage);
         }
 
-    }
+    }*/
 }

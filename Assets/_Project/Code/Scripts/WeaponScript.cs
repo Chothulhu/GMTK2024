@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject bulletPrefab;
     [SerializeField] private int bulletCount;
@@ -21,7 +20,6 @@ public class WeaponScript : MonoBehaviour
         globals = GameObject.FindGameObjectWithTag("GameMaster").gameObject;
         playerTransform = globals.GetComponent<GlobalsScript>().playerPosition;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -41,8 +39,7 @@ public class WeaponScript : MonoBehaviour
             } else
             {
                 //play Jamming sound
-            }
-            
+            }   
         }
     }
 
@@ -65,8 +62,5 @@ public class WeaponScript : MonoBehaviour
         if (playerMouseDiff.x > 0) return -90f;
         else return 90f;
     }
-
-
-
 
 }

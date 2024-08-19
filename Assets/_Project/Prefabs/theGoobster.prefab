@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2799739119482906164}
   - component: {fileID: 5486438368098749441}
   - component: {fileID: 8065834732879653051}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: StrongPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,10 +145,9 @@ GameObject:
   - component: {fileID: 1232961355948192837}
   - component: {fileID: 4734883985889808407}
   - component: {fileID: 8977038527600863857}
-  - component: {fileID: 1153889745676746723}
   - component: {fileID: 7714211175376698243}
   - component: {fileID: 3828388824825852474}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: theGoobster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -259,51 +258,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.15}
   m_Size: {x: 0.8, y: 1.72}
   m_Direction: 0
---- !u!61 &1153889745676746723
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747068664826382718}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.056286037, y: 0.8036346}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.662284, y: 0.17696798}
-  m_EdgeRadius: 0
 --- !u!50 &7714211175376698243
 Rigidbody2D:
   serializedVersion: 4
@@ -343,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5541194ac5dd8e64fb896a42621e91f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   speed: 3
   itemToDrop: {fileID: 1911869002982079505, guid: 3bbc6d4ef56cef54ab616086b74de3e6, type: 3}
   scaleSpeed: 0.05
@@ -404,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 3123014936520527430, guid: 565aa6688e8bca64ba60f4955e3c9496, type: 3}
       propertyPath: m_Name
       value: WeakPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123014936520527430, guid: 565aa6688e8bca64ba60f4955e3c9496, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6273331310025315471, guid: 565aa6688e8bca64ba60f4955e3c9496, type: 3}
       propertyPath: m_Enabled
