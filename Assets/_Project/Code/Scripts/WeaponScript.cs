@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class WeaponScript : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class WeaponScript : MonoBehaviour
             {
                 //play Jamming sound
             }   
+            Shoot();
+            SmallHedge.SoundManager.PlaySound(SoundType.SHOOT, null, 1);
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using SmallHedge;
 
 public class EnemyScript : MonoBehaviour, DamagableEntity
 {
@@ -62,6 +63,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         {
             Debug.Log("Hp 0: " + gameObject.name);
             Die();
+            SmallHedge.SoundManager.PlaySound(SoundType.NPCDEATH, null, 0.3f);
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -133,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         
+        SmallHedge.SoundManager.PlaySound(SoundType.DASH, null, (float) 0.1);
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
@@ -148,9 +150,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
         
+
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
 
         var enemy = collision.GetComponent<DamagableEntity>();
@@ -159,5 +162,5 @@ public class PlayerMovement : MonoBehaviour
             enemy.TakeDamage(dashDamage);
         }
 
-    }*/
+    }
 }
