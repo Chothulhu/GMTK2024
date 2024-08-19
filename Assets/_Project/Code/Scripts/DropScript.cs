@@ -16,6 +16,7 @@ public class DropScript : MonoBehaviour
     public void GoToBoss()
     {
         Debug.Log("Collect me");
+        rb.excludeLayers -= LayerMask.GetMask("Boss");
         Vector2 direction = bossPosition.position - transform.position;
         rb.gravityScale = 0;
         rb.velocity = direction.normalized * speed;

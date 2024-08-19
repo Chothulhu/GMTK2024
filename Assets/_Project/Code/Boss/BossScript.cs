@@ -13,6 +13,7 @@ public class BossScript : MonoBehaviour
     private bool isCasting = false;
     [SerializeField] private float startAbilityCooldown;
     private float abilityCooldown;
+    private float baseAbilityCooldown;
     int rand;
 
     [SerializeField] private GameObject shockwave;
@@ -35,6 +36,7 @@ public class BossScript : MonoBehaviour
     private void Start()
     {
         abilityCooldown = startAbilityCooldown;
+        baseAbilityCooldown = abilityCooldown;
     }
 
     private void Update()
@@ -119,8 +121,7 @@ public class BossScript : MonoBehaviour
 
     public void ScaleAbilityCooldown()
     {
-        Debug.Log("HIIII");
-        startAbilityCooldown = startAbilityCooldown * transform.localScale.x;
+        startAbilityCooldown = baseAbilityCooldown * transform.localScale.x;
     }
 
     public void CastFirstAbility()
@@ -192,7 +193,14 @@ public class BossScript : MonoBehaviour
         ScaleAbilityCooldown();
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Ammo")
+        {
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+            TriggerScaling(true);
+        }
+    }
 
     public void TakeDamage(int damage)
     {
