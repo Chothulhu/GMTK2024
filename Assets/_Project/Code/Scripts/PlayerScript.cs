@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using SmallHedge;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -49,12 +50,18 @@ public class PlayerScript : MonoBehaviour
                 collision.gameObject.SetActive(false);
             }
             
+//            if (playerMovement.isDashing)
+//            {
+//                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
+//                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float) 0.6);
+//            }   
         }
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        SmallHedge.SoundManager.PlaySound(SoundType.DMGTAKEN, null, (float) 0.6);
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {

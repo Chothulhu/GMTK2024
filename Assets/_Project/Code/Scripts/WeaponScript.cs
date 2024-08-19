@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class WeaponScript : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class WeaponScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1")) {
             Shoot();
+            SmallHedge.SoundManager.PlaySound(SoundType.SHOOT, null, 1);
         }
     }
 
