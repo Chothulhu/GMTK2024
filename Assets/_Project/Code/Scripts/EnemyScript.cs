@@ -21,6 +21,8 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     [SerializeField] private float scaleMin = 0.4f;
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
+    [SerializeField] private GameObject bloodParticles;
+    [SerializeField] private Transform bloodParticlesPosition;
 
     private void Awake()
     {
@@ -82,6 +84,15 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     // Method to trigger the scaling for 10 seconds
     private IEnumerator ScaleNegativeForSeconds(int duration)
     {
+        //fml (zaustavimo particleSystem da bi postavili duzinu trajanja kao i za scalingDown)
+        var particle = ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
+        particle.transform.SetParent(gameObject.transform);
+        var particleSystem = particle.GetComponent<ParticleSystem>();
+        particleSystem.Stop();
+        var main = particleSystem.main;
+        main.duration = duration;
+        particleSystem.Play();
+
         isNegativeScaling = true;
         yield return new WaitForSeconds(duration); // Wait for the specified duration
         isNegativeScaling = false;
@@ -99,7 +110,6 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         Debug.Log("DIED: " + gameObject.name);
         ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         ObjectPoolManager.ReturnObjectToPool(gameObject);
-
     }
 
 

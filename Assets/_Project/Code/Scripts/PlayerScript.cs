@@ -55,10 +55,11 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
                 Debug.Log("rb velocity.y " + rb.velocity.y);
                 collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
             }
-            
+
             if (playerMovement.isDashing)
             {
                 collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
+                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float)0.6);
             }
         }
 
@@ -75,18 +76,13 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
             {
                 Debug.Log("rb velocity.y " + rb.velocity.y);
                 collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
-            }
+            }  
         }
 
         if (collision.tag == "Ammo")
         {    
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
-            weaponScript.CollectAmmo();
-            if (playerMovement.isDashing)
-            {
-               collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
-                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float) 0.6);
-            }   
+            weaponScript.CollectAmmo();   
         }
     }
 
@@ -102,9 +98,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     }
 
     private void Die() {
-
         Destroy(gameObject);
-    
     }
 
 }

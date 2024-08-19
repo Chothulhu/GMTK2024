@@ -19,7 +19,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] private GameObject shockwave;
     [SerializeField] private Transform shockwavePosition;
 
-    [SerializeField] private GameObject acidBall;
+    [SerializeField] private GameObject[] acidBall;
     [SerializeField] private Transform[] acidBallPositions;
 
     [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
@@ -27,6 +27,8 @@ public class BossScript : MonoBehaviour
     [SerializeField] private float scaleMin = 0.4f;
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
+    [SerializeField] private GameObject bloodParticles;
+    [SerializeField] private Transform bloodParticlesPosition;
 
     private void Awake()
     {
@@ -149,10 +151,12 @@ public class BossScript : MonoBehaviour
     private IEnumerator SpawnAcidRain(float timeBetweenProjectiles, int quantity)
     {
         int rand;
+        int rand2;
         for (int i = 0; i < quantity; i++)
         { 
             rand = UnityEngine.Random.Range(0, acidBallPositions.Length);
-            ObjectPoolManager.SpawnObject(acidBall, acidBallPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
+            rand2 = UnityEngine.Random.Range(0, acidBall.Length);
+            ObjectPoolManager.SpawnObject(acidBall[rand2], acidBallPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
             yield return new WaitForSeconds(timeBetweenProjectiles);
         }
 
@@ -179,6 +183,16 @@ public class BossScript : MonoBehaviour
     // Method to trigger the scaling for 10 seconds
     private IEnumerator ScaleNegativeForSeconds(int duration)
     {
+        //fml (zaustavimo particleSystem da bi postavili duzinu trajanja kao i za scalingDown)
+        var particle = ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
+        particle.transform.SetParent(gameObject.transform);
+        var particleSystem = particle.GetComponent<ParticleSystem>();
+        particleSystem.Stop();
+        var main = particleSystem.main;
+        main.duration = duration;
+        particleSystem.Play();
+
+        ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
         isNegativeScaling = true;
         yield return new WaitForSeconds(duration); // Wait for the specified duration
         isNegativeScaling = false;

@@ -12,6 +12,9 @@ public class AcidBallScript : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+        
     }
 
     private void Start()

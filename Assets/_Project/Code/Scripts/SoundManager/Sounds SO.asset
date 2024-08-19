@@ -13,25 +13,28 @@ MonoBehaviour:
   m_Name: Sounds SO
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    volume: 0
+  - name: SHOOT
+    volume: 1
     mixer: {fileID: 0}
     sounds:
-    - {fileID: 0}
-  - name: 
-    volume: 0
+    - {fileID: 8300000, guid: 8e392db739775094e9fcf53f4165cd71, type: 3}
+  - name: DASH
+    volume: 1
     mixer: {fileID: 0}
     sounds:
-    - {fileID: 0}
-  - name: 
-    volume: 0
+    - {fileID: 8300000, guid: b08f8bafab176af489c7736ccbfe1d8c, type: 3}
+  - name: DMGTAKEN
+    volume: 1
     mixer: {fileID: 0}
-    sounds: []
-  - name: 
-    volume: 0
+    sounds:
+    - {fileID: 8300000, guid: 5df2c527e280f214b9506990a62b305b, type: 3}
+  - name: NPCDEATH
+    volume: 1
     mixer: {fileID: 0}
-    sounds: []
-  - name: 
-    volume: 0
+    sounds:
+    - {fileID: 8300000, guid: 34e63d958c33f5b4aa7377724594683c, type: 3}
+  - name: DASHYESHIT
+    volume: 1
     mixer: {fileID: 0}
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 7b257d24c1430f14b904cf221b1e33eb, type: 3}

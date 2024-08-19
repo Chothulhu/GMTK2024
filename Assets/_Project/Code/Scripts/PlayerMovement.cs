@@ -152,15 +152,4 @@ public class PlayerMovement : MonoBehaviour
         
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        var enemy = collision.GetComponent<DamagableEntity>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(dashDamage);
-        }
-
-    }
 }
