@@ -13,6 +13,12 @@ public class DropScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bossPosition = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GlobalsScript>().bossPosition;
     }
+
+    private void OnEnable()
+    {
+        rb.gravityScale = 1;
+    }
+
     public void GoToBoss()
     {
         Debug.Log("Collect me");

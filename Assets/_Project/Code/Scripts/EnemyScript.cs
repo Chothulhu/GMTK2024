@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
     [SerializeField] private int scaleLast = 10;
     [SerializeField] private float scaleMin = 0.4f;
+    [SerializeField] private float scaleMax = 2f;
     [SerializeField] private GameObject bloodParticles;
     [SerializeField] private Transform bloodParticlesPosition;
     [SerializeField] private GameObject[] bloodSplatter;
@@ -63,7 +64,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
             transform.localScale += Vector3.one * -scaleSpeed * Time.deltaTime;
         }
 
-        if (isPositiveScaling)
+        if (isPositiveScaling && (transform.localScale.x < scaleMax && transform.localScale.y < scaleMax && transform.localScale.z < scaleMax))
         {
             // Increase the scale by X unit per second
             transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime;
@@ -113,7 +114,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         isNegativeScaling = false;
     }
 
-    private IEnumerator ScaleForSeconds(float duration)
+    private IEnumerator ScaleForSeconds(int duration)
     {
         isPositiveScaling = true;
         yield return new WaitForSeconds(duration); // Wait for the specified duration
@@ -133,11 +134,20 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         
     }
 
+ /*   private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Ammo")
+        {
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+            TriggerScaling(true);
+        }
+    }*/
+
     public void Die()
     {
         Debug.Log("DIED: " + gameObject.name);
         var id =  UnityEngine.Random.Range(0, bloodSplatter.Length);
-        Instantiate(bloodParticlesExplosion, transform.position, Quaternion.identity);
+        Instantiate(bloodParticlesExplosion, transform.position - new Vector3(0, 0.8f, 0), Quaternion.identity);
         Instantiate(bloodSplatter[id], transform.position - new Vector3(0, 0.8f, 0), Quaternion.identity);
         ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         ObjectPoolManager.ReturnObjectToPool(gameObject);
