@@ -131,8 +131,12 @@ public class BossScript : MonoBehaviour
         //ground slam that spawns shockwaves 
         GameObject shock1 = ObjectPoolManager.SpawnObject(shockwave, shockwavePosition.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         shock1.GetComponent<ShockwaveScript>().direction = false;
+        Vector2 localScale1 = shock1.GetComponent<Transform>().localScale;
+        localScale1.x *= -1f;
+        shock1.GetComponent<Transform>().localScale = localScale1;
         GameObject shock2 = ObjectPoolManager.SpawnObject(shockwave, shockwavePosition.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         shock2.GetComponent<ShockwaveScript>().direction = true;
+        
         isCasting = false;
     }
 

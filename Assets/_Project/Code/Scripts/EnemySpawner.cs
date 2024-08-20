@@ -16,11 +16,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float startBigEnemySpawnCooldown;
 
     [SerializeField] private Transform[] spawnPositions;
+    private int progress = 0;
+    [SerializeField] private int requiredProgress;
+    [SerializeField] private HealthBar progressBar;
 
     private void Start()
     {
         lizardSpawnCooldown = startLizardSpawnCooldown;
         bigEnemySpawnCooldown = startBigEnemySpawnCooldown;
+        bossEnemy.SetActive(false);
+
+        progressBar.SetMaxHealth(requiredProgress);
+        progressBar.SetHealth(0);
     }
     private void Update()
     {
@@ -45,5 +52,17 @@ public class EnemySpawner : MonoBehaviour
             ObjectPoolManager.SpawnObject(bigEnemy, spawnPositions[rand].position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
             bigEnemySpawnCooldown = startBigEnemySpawnCooldown;
         }
+
+        if (progress >= requiredProgress)
+        {
+            //activate boss
+            bossEnemy.SetActive(true);
+        }
+    }
+
+    public void AddProgress(int value)
+    {
+        progress += value;
+        progressBar.SetHealth(progress);
     }
 }

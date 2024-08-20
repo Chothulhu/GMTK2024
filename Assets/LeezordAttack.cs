@@ -10,12 +10,18 @@ public class LeezordAttack : MonoBehaviour
     private Transform target;
     [SerializeField] private float radius;
     [SerializeField] private float damage;
+    private bool inAnimation = false;
 
     private void Awake()
     {
         enemyScript = GetComponent<EnemyScript>();
         globalsScript = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GlobalsScript>();
         anim = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        inAnimation = false;
     }
 
     private void Start()
@@ -26,8 +32,9 @@ public class LeezordAttack : MonoBehaviour
     private void Update()
     {
         float distance = Vector2.Distance(target.position, transform.position);
-        if (Mathf.Abs(distance) < radius)
+        if (Mathf.Abs(distance) < radius && !inAnimation)
         {
+            inAnimation = true;
             StartAttack();
         }
     }
@@ -42,5 +49,8 @@ public class LeezordAttack : MonoBehaviour
     public void LeezordExplode()
     {
         Debug.Log("Boom");
+        inAnimation = false;
+        enemyScript.Die();
+        
     }
 }

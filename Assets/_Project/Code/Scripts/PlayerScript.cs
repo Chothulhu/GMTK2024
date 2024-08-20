@@ -11,9 +11,10 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     [SerializeField] private int dashDamage = 100;
 
     private SpriteRenderer spriteRenderer;
-    private float squashThresholdMultiplier = 0.75f; // Determines how small should an enemy be for killing via stomp mechanic
+    private float squashThresholdMultiplier = 0.9f; // Determines how small should an enemy be for killing via stomp mechanic
     [SerializeField] private WeaponScript weaponScript;
     private PlayerMovement playerMovement;
+    private GlobalsScript globalsScript;
     private Rigidbody2D rb;
 
     [SerializeField] private HealthBar healthBar;
@@ -23,6 +24,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
+        globalsScript = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GlobalsScript>();
     }
 
     private void Start()
@@ -48,8 +50,6 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
             
             float playerHeight = spriteRenderer.bounds.size.y;
 
-            Debug.Log("Enemy: " + enemyHeight);
-            Debug.Log("Player: " + playerHeight * squashThresholdMultiplier);
             if (playerHeight * squashThresholdMultiplier >= enemyHeight && rb.velocity.y < 0)
             {
                 Debug.Log("rb velocity.y " + rb.velocity.y);
@@ -58,7 +58,14 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
 
             if (playerMovement.isDashing)
             {
-                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
+                if (playerHeight * squashThresholdMultiplier >= enemyHeight) {
+                    collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage + 10000);
+                } 
+                else
+                {
+                    collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
+                }
+                
                 SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float)0.6);
             }
         }
@@ -70,18 +77,31 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
 
             float playerHeight = spriteRenderer.bounds.size.y;
 
-            Debug.Log("Enemy: " + enemyHeight);
-            Debug.Log("Player: " + playerHeight * squashThresholdMultiplier);
             if (playerHeight * squashThresholdMultiplier >= enemyHeight && rb.velocity.y < 0)
             {
                 Debug.Log("rb velocity.y " + rb.velocity.y);
                 collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
-            }  
+            }
+
+            if (playerMovement.isDashing)
+            {
+                if (playerHeight * squashThresholdMultiplier >= enemyHeight)
+                {
+                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage + 10000);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage);
+                }
+
+                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float)0.6);
+            }
         }
 
         if (collision.tag == "Ammo")
         {    
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+            globalsScript.GetComponent<EnemySpawner>().AddProgress(1);
             weaponScript.CollectAmmo();   
         }
     }

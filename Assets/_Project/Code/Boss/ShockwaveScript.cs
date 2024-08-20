@@ -17,6 +17,7 @@ public class ShockwaveScript : MonoBehaviour
         else
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            
         }
         
     }
