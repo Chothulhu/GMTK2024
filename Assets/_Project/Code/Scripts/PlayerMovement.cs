@@ -56,8 +56,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (IsGrounded() || canDoubleJump)
+            var isGrounded = IsGrounded();
+            if (isGrounded || canDoubleJump)
             {
+                if(isGrounded){
+                    SmallHedge.SoundManager.PlaySound(SoundType.JUMPING, null, (float) 0.2);
+                }
+                else{
+                    SmallHedge.SoundManager.PlaySound(SoundType.DOUBLEJUMP, null, (float) 0.2);
+
+                }
                 rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
                 anim.SetTrigger("Jump");
                 canDoubleJump = !canDoubleJump;
