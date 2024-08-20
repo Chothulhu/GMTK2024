@@ -203,9 +203,10 @@ MonoBehaviour:
   speed: 3
   isFacingRightAtStart: 1
   itemToDrop: {fileID: 1911869002982079505, guid: 3bbc6d4ef56cef54ab616086b74de3e6, type: 3}
-  scaleSpeed: 0.1
+  scaleSpeed: 0.25
   scaleLast: 2
   scaleMin: 0.3
+  scaleMax: 2
   bloodParticles: {fileID: 3573644588782310734, guid: fe6c69bb600a4844f849d1c1f22975fb, type: 3}
   bloodParticlesPosition: {fileID: 6345331184397673069}
   bloodSplatter:

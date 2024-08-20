@@ -14,6 +14,12 @@ public class BulletScript : MonoBehaviour
         // Calculate the direction from the bullet to the mouse position
         Vector2 direction = mousePosition - transform.position;
 
+        // Calculate the rotation angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Apply the rotation to the GameObject
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+
         // Set the bullet's velocity to move in the direction of the mouse position
         rb.velocity = direction.normalized * speed;
         Debug.Log(rb.velocity);

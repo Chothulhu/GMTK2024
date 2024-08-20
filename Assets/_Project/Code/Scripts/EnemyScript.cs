@@ -23,6 +23,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
 
     private bool isPositiveScaling = false;
     private bool isNegativeScaling = false;
+    private Transform initialTransform;
     [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
     [SerializeField] private int scaleLast = 10;
     [SerializeField] private float scaleMin = 0.4f;
@@ -35,8 +36,12 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     {
         globals = GameObject.FindGameObjectWithTag("GameMaster").gameObject;
         target = globals.GetComponent<GlobalsScript>().playerPosition;
+        initialTransform = transform;
     }
-
+    private void OnEnable()
+    {
+        transform.localScale = initialTransform.localScale;
+    }
     private void Start()
     {
         health = maxHealth;

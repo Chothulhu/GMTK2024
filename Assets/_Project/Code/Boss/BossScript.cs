@@ -189,7 +189,7 @@ public class BossScript : MonoBehaviour
     {
         //fml (zaustavimo particleSystem da bi postavili duzinu trajanja kao i za scalingDown)
         var particle = ObjectPoolManager.SpawnObject(bloodParticles, spawnPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
-        particle.transform.SetParent(gameObject.transform);
+        particle.transform.position = gameObject.transform.position;
         var particleSystem = particle.GetComponent<ParticleSystem>();
         particleSystem.Stop();
         var main = particleSystem.main;
