@@ -38,3 +38,33 @@ MonoBehaviour:
     mixer: {fileID: 0}
     sounds:
     - {fileID: 8300000, guid: 7b257d24c1430f14b904cf221b1e33eb, type: 3}
+  - name: JUMPING
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 131c981eceb1c0746b200e7198ab322b, type: 3}
+  - name: LANDING
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 3ce988637c322834e990aecc829d09de, type: 3}
+  - name: EMPTYGUN
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 488d5afec9ba9a648ace4809a6e82dac, type: 3}
+  - name: OST
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 153e0ce10cb4c254a8a563091cb734bd, type: 3}
+  - name: EXPLOSION
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 386338c4309b47249828b7cea00b332b, type: 3}
+  - name: DOUBLEJUMP
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 6a91c36c55c4d3044b2cfe0cadeb203e, type: 3}

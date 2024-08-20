@@ -6,6 +6,12 @@ namespace SmallHedge
         DASH,
         DMGTAKEN,
         NPCDEATH,
-        DASHYESHIT
+        DASHYESHIT,
+        JUMPING,
+        LANDING,
+        EMPTYGUN,
+        OST,
+        EXPLOSION,
+        DOUBLEJUMP
     }
 }
