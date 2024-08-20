@@ -8,9 +8,12 @@ public class LeezordAttack : MonoBehaviour
     private Animator anim;
     private GlobalsScript globalsScript;
     private Transform target;
-    [SerializeField] private float radius;
-    [SerializeField] private float damage;
+    [SerializeField] private float radiusDetect;
+    [SerializeField] private int damage;
     private bool inAnimation = false;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] LayerMask layerToDamage;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class LeezordAttack : MonoBehaviour
     private void Update()
     {
         float distance = Vector2.Distance(target.position, transform.position);
-        if (Mathf.Abs(distance) < radius && !inAnimation)
+        if (Mathf.Abs(distance) < radiusDetect && !inAnimation)
         {
             inAnimation = true;
             StartAttack();
@@ -49,6 +52,14 @@ public class LeezordAttack : MonoBehaviour
     public void LeezordExplode()
     {
         Debug.Log("Boom");
+        // Detect damagable entities
+        Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layerToDamage);
+
+        foreach (Collider2D entity in hitEntities)
+        {
+            Debug.Log("Te Aknem!" + entity.name);
+            entity.GetComponent<DamagableEntity>().TakeDamage(damage);
+        }
         inAnimation = false;
         enemyScript.Die();
         

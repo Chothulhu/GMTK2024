@@ -7,7 +7,6 @@ public class EnemyCombatScript : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] LayerMask layerToDamage;
     [SerializeField] private int damage;
-    [SerializeField] private float attackAnimationDelay;
     private bool inAnimation = false;
 
     private void OnEnable()
