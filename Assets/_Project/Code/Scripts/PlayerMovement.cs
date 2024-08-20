@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool canDash = true;
     [HideInInspector] public bool isDashing;
     [SerializeField] private float dashingForce = 24f;
-    [SerializeField] private float dashingTime = 0.12f;
+    [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 3f;
     [SerializeField] private BoxCollider2D hitBox;
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         baseGravityScale = rb.gravityScale;
         hitBox = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        weapon = transform.GetChild(0).gameObject;
+        //weapon = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        weapon.SetActive(false);
+        //weapon.SetActive(false);
         SmallHedge.SoundManager.PlaySound(SoundType.DASH, null, (float) 0.1);
         canDash = false;
         isDashing = true;
@@ -148,18 +148,15 @@ public class PlayerMovement : MonoBehaviour
         rb.excludeLayers -= LayerMask.GetMask("Boss");
         rb.velocity = new Vector2(transform.localScale.x * dashingForce, 0f);
         yield return new WaitForSeconds(dashingTime);
-        anim.SetBool("isDashing", false);
+        
         hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         //weapon.SetActive(true);
         rb.excludeLayers += LayerMask.GetMask("Boss");
+        anim.SetBool("isDashing", false);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
 
-    public void TurnOnWeapon()
-    {
-        weapon.SetActive(true);
-    }
 }
