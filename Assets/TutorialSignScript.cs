@@ -5,11 +5,14 @@ using UnityEngine;
 public class TutorialSignScript : MonoBehaviour
 {
     private GameObject canvasGameObject;
+    public bool isStart = false;
+    private EnemySpawner enemySpawner;
 
     private void Awake()
     {
         canvasGameObject = transform.GetChild(0).gameObject;
         canvasGameObject.SetActive(false);
+        enemySpawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<EnemySpawner>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +20,11 @@ public class TutorialSignScript : MonoBehaviour
         if(collision.tag == "Player")
         {
             canvasGameObject.SetActive(true);
+            /*if (isStart)
+            {
+                isStart = false;
+                enemySpawner.isStart = true;
+            }*/
         }
     }
 

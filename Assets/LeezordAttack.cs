@@ -61,7 +61,6 @@ public class LeezordAttack : MonoBehaviour
             entity.GetComponent<DamagableEntity>().TakeDamage(damage);
         }
         inAnimation = false;
-        enemyScript.Die();
-        
+        enemyScript.Die();   
     }
 }
