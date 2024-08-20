@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using SmallHedge;
 
 public class PlayerScript : MonoBehaviour, DamagableEntity
 {
 
     private int currentHealth = 100;
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int dashDamage = 100;
 
     private SpriteRenderer spriteRenderer;
-    private float squashThresholdMultiplier = 0.75f; // Determines how small should an enemy be for killing via stomp mechanic
+    private float squashThresholdMultiplier = 0.9f; // Determines how small should an enemy be for killing via stomp mechanic
     [SerializeField] private WeaponScript weaponScript;
+    private PlayerMovement playerMovement;
+    private GlobalsScript globalsScript;
     private Rigidbody2D rb;
 
     [SerializeField] private HealthBar healthBar;
@@ -18,7 +22,9 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
+        globalsScript = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GlobalsScript>();
     }
 
     private void Start()
@@ -44,19 +50,59 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
             
             float playerHeight = spriteRenderer.bounds.size.y;
 
-            Debug.Log("Enemy: " + enemyHeight);
-            Debug.Log("Player: " + playerHeight * squashThresholdMultiplier);
             if (playerHeight * squashThresholdMultiplier >= enemyHeight && rb.velocity.y < 0)
             {
-                Debug.Log("hi pookie");
+                Debug.Log("rb velocity.y " + rb.velocity.y);
                 collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
-            } 
+            }
+
+            if (playerMovement.isDashing)
+            {
+                if (playerHeight * squashThresholdMultiplier >= enemyHeight) {
+                    collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage + 10000);
+                } 
+                else
+                {
+                    collision.gameObject.GetComponent<EnemyScript>().TakeDamage(dashDamage);
+                }
+                
+                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float)0.6);
+            }
+        }
+
+        // vrv moze dosta lepse ali za jam dosta
+        if (collision.tag == "Boss")
+        {
+            float enemyHeight = collision.gameObject.GetComponent<BoxCollider2D>().bounds.size.y;
+
+            float playerHeight = spriteRenderer.bounds.size.y;
+
+            if (playerHeight * squashThresholdMultiplier >= enemyHeight && rb.velocity.y < 0)
+            {
+                Debug.Log("rb velocity.y " + rb.velocity.y);
+                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(10000);
+            }
+
+            if (playerMovement.isDashing)
+            {
+                if (playerHeight * squashThresholdMultiplier >= enemyHeight)
+                {
+                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage + 10000);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage);
+                }
+
+                SmallHedge.SoundManager.PlaySound(SoundType.DASHYESHIT, null, (float)0.6);
+            }
         }
 
         if (collision.tag == "Ammo")
         {    
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
-            weaponScript.CollectAmmo();
+            globalsScript.GetComponent<EnemySpawner>().AddProgress(1);
+            weaponScript.CollectAmmo();   
         }
     }
 
@@ -64,6 +110,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     {
         Debug.Log("Udaren batko");
         currentHealth -= damage;
+        SmallHedge.SoundManager.PlaySound(SoundType.DMGTAKEN, null, (float) 0.6);
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
@@ -72,9 +119,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     }
 
     private void Die() {
-
         Destroy(gameObject);
-    
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,12 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
     //DASH
     [SerializeField] private bool canDash = true;
-    [SerializeField] private bool isDashing;
+    [HideInInspector] public bool isDashing;
     [SerializeField] private float dashingForce = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 0f;
     [SerializeField] private BoxCollider2D hitBox;
-    [SerializeField] private int dashDamage = 100;
+
 
     //GROUND SLAM
     [SerializeField] private bool isForceDown;
@@ -133,31 +134,24 @@ public class PlayerMovement : MonoBehaviour
     {
         
         
+        SmallHedge.SoundManager.PlaySound(SoundType.DASH, null, (float) 0.1);
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         hitBox.isTrigger = true;
+        rb.excludeLayers -= LayerMask.GetMask("Boss");
         rb.velocity = new Vector2(transform.localScale.x * dashingForce, 0f);
         yield return new WaitForSeconds(dashingTime);
         anim.SetBool("isDashing", false);
         hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        rb.excludeLayers += LayerMask.GetMask("Boss");
         weapon.SetActive(true);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        var enemy = collision.GetComponent<DamagableEntity>();
-        if (enemy != null && isDashing)
-        {
-            enemy.TakeDamage(dashDamage);
-        }
 
     }
 }

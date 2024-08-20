@@ -9,6 +9,8 @@ TagManager:
   - Globals
   - GameMaster
   - Ammo
+  - Boss
+  - Shockwave
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
+  - Boss
+  - Enemy
+  - Shockwave
   - 
   - 
   - 
@@ -45,6 +47,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4117255089
     locked: 0
   - name: UI
     uniqueID: 3395272161

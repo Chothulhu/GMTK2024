@@ -11,7 +11,6 @@ public class ObjectPoolManager : MonoBehaviour
 
     private static GameObject _particleSystemsEmpty;
     private static GameObject _gameObjectsEmpty;
-
     public enum PoolType
     {
         ParticleSystem,

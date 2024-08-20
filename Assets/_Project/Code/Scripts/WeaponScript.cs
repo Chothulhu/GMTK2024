@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class WeaponScript : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject bulletPrefab;
     [SerializeField] private int bulletCount;
@@ -21,7 +21,6 @@ public class WeaponScript : MonoBehaviour
         globals = GameObject.FindGameObjectWithTag("GameMaster").gameObject;
         playerTransform = globals.GetComponent<GlobalsScript>().playerPosition;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -41,12 +40,14 @@ public class WeaponScript : MonoBehaviour
             } else
             {
                 //play Jamming sound
-            }
-            
+            }   
+            Shoot();
+            SmallHedge.SoundManager.PlaySound(SoundType.SHOOT, null, 1);
         }
     }
 
     void Shoot() {
+        CinemachineScreenShake.Instance.ShakeCamera(2f, 0.1f);
         ObjectPoolManager.SpawnObject(bulletPrefab, firePoint.position, firePoint.rotation, ObjectPoolManager.PoolType.GameObject);
     }
 
@@ -65,8 +66,5 @@ public class WeaponScript : MonoBehaviour
         if (playerMouseDiff.x > 0) return -90f;
         else return 90f;
     }
-
-
-
 
 }
