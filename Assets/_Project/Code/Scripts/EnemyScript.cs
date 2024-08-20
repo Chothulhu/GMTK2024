@@ -10,20 +10,22 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
 {
     private int health;
     [SerializeField] private int maxHealth;
-    [SerializeField] private float speed;
+
+    public float speed;
+
     private GameObject globals;
     private Transform target;
+    
+    private bool isFacingRight;
     [SerializeField] private bool isFacingRightAtStart;
-    [SerializeField] private bool isFacingRight;
 
     [SerializeField] private GameObject itemToDrop;
 
-
+    private bool isPositiveScaling = false;
+    private bool isNegativeScaling = false;
     [SerializeField] private float scaleSpeed = 0.00000001f; // Speed at which the scale increases
     [SerializeField] private int scaleLast = 10;
     [SerializeField] private float scaleMin = 0.4f;
-    private bool isPositiveScaling = false;
-    private bool isNegativeScaling = false;
     [SerializeField] private GameObject bloodParticles;
     [SerializeField] private Transform bloodParticlesPosition;
 
@@ -36,6 +38,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     private void Start()
     {
         health = maxHealth;
+        isFacingRight = isFacingRightAtStart;
     }
 
     private void Update()
@@ -114,26 +117,13 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     private void FlipSprite()
     {
         var diff = target.position - transform.position;
-        if (isFacingRightAtStart)
+        if (isFacingRight && diff.x < 0f || !isFacingRight && diff.x > 0f)
         {
-            if (isFacingRight && diff.x > 0f || !isFacingRight && diff.x < 0f)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-            }
-        } 
-        else
-        {
-            if (isFacingRight && diff.x < 0f || !isFacingRight && diff.x > 0f)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-            }
-        }
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }    
         
     }
 

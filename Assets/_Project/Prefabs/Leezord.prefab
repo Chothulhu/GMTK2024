@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5908283221984313809}
   - component: {fileID: 5661131771977661376}
   - component: {fileID: 7929803373111012563}
+  - component: {fileID: -6224854261796929413}
+  - component: {fileID: 8313852400732304874}
   m_Layer: 8
   m_Name: Leezord
   m_TagString: Enemy
@@ -163,7 +165,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 3
+  isFacingRightAtStart: 0
   itemToDrop: {fileID: 1911869002982079505, guid: 3bbc6d4ef56cef54ab616086b74de3e6, type: 3}
   scaleSpeed: 1
-  scaleLast: 10
+  scaleLast: 5
   scaleMin: 0.4
+  bloodParticles: {fileID: 0}
+  bloodParticlesPosition: {fileID: 0}
+--- !u!114 &-6224854261796929413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878426402607829869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13afa88802c48d64db705e3741b0fe19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  damage: 0
+--- !u!95 &8313852400732304874
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878426402607829869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89b297b7881ef4f48a88c3e954ee6833, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
