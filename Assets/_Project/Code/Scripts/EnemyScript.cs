@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
 {
     private int health;
     [SerializeField] private int maxHealth;
-
+    [SerializeField] GameObject bloodParticlesExplosion;
     public float speed;
 
     private GameObject globals;
@@ -135,6 +135,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     public void Die()
     {
         Debug.Log("DIED: " + gameObject.name);
+        Instantiate(bloodParticlesExplosion, transform.position, Quaternion.identity);
         ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         ObjectPoolManager.ReturnObjectToPool(gameObject);
     }

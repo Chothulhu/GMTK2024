@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  bloodParticlesExplosion: {fileID: 2577418142405748157, guid: 926c76cc001224546b3c366a950cc8bf, type: 3}
   speed: 3
   isFacingRightAtStart: 0
   itemToDrop: {fileID: 1911869002982079505, guid: 3bbc6d4ef56cef54ab616086b74de3e6, type: 3}
