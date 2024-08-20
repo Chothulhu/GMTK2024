@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
     private PlayerMovement playerMovement;
     private GlobalsScript globalsScript;
     private Rigidbody2D rb;
+    public GameObject loseScreen;
 
     [SerializeField] private HealthBar healthBar;
 
@@ -119,6 +120,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
 
     private void Die() {
         Destroy(gameObject);
+        loseScreen.SetActive(true);
     }
 
 }

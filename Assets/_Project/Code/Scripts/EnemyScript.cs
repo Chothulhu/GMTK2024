@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using SmallHedge;
-using UnityEditor.Tilemaps;
 
 public class EnemyScript : MonoBehaviour, DamagableEntity
 {
