@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bf90d5a00e47fd94da7c9d9f1bb56e2c
+guid: 37cb584567744fc459c5967abcd2ee5f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,316 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: guyIdle_0
+      name: guyWalk-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeec23d3322b4ee4f814936de37b369f
-      internalID: -1681680488
+      spriteID: 92dd1333509bb13459a426d7c4e00e44
+      internalID: 258527693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_1
+      name: guyWalk-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4c91ab5a2c4b6d43a791a60a006a8a4
-      internalID: 781069620
+      spriteID: 30314fdc3f28d654e899373922671aa4
+      internalID: -1070913184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_2
+      name: guyWalk-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad81053ab6b17d4abde819ce45476de
-      internalID: -1507474847
+      spriteID: d16dc3166854dde48895457ea1bcc19b
+      internalID: -1762947163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_3
+      name: guyWalk-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a65f5fea0353294194dcc56084c9822
-      internalID: -1446621075
+      spriteID: 9432deae759e51b4dbe2e18f0ab796d8
+      internalID: 388479931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_4
+      name: guyWalk-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46023be546faaa646a91915c3bb3f469
-      internalID: 74256813
+      spriteID: 542f3ae56ac99ad448e517e9d8bbc68b
+      internalID: -823737730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_5
+      name: guyWalk-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f06d579e136db945805c1568daff306
-      internalID: 108099126
+      spriteID: 688728c49d4228d4597584e4f370109a
+      internalID: 499785241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_6
+      name: guyWalk-Sheet_6
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 319a2472bd767c843b0fc470e0c7c41f
-      internalID: 2014689869
+      spriteID: 2b43938ae4ef12947af13c0771fb4658
+      internalID: -1010192352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guyIdle_7
+      name: guyWalk-Sheet_7
       rect:
         serializedVersion: 2
         x: 448
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3811948, y: 0.5950441}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b84635ca7b785041b2de3d47c57ecc2
-      internalID: -189296475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdd6ebd4bcbe9ad468a872f8f219e228
-      internalID: 1057099574
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de4aa8e3cac4b6948868afefcca80d75
-      internalID: 720310681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d6a1724a3493c94b834673963c3bbd2
-      internalID: 655281059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da6b6c8dd01b9054fb2af63cf40225b4
-      internalID: 176200832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_12
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6c53cd1dab13674a874343a5a205865
-      internalID: 943379753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_13
-      rect:
-        serializedVersion: 2
-        x: 832
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b5ef5b5279944641b54644a2eda57a7
-      internalID: 445730881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guyIdle_14
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd0fa0c7ab5c4af4d869ed015e0380ae
-      internalID: 279966610
+      spriteID: 2d9547baf688cec42a6b76670bba9dfd
+      internalID: -1938365193
       vertices: []
       indices: 
       edges: []
@@ -448,21 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      guyIdle_0: -1681680488
-      guyIdle_1: 781069620
-      guyIdle_10: 655281059
-      guyIdle_11: 176200832
-      guyIdle_12: 943379753
-      guyIdle_13: 445730881
-      guyIdle_14: 279966610
-      guyIdle_2: -1507474847
-      guyIdle_3: -1446621075
-      guyIdle_4: 74256813
-      guyIdle_5: 108099126
-      guyIdle_6: 2014689869
-      guyIdle_7: -189296475
-      guyIdle_8: 1057099574
-      guyIdle_9: 720310681
+      guyWalk-Sheet_0: 258527693
+      guyWalk-Sheet_1: -1070913184
+      guyWalk-Sheet_2: -1762947163
+      guyWalk-Sheet_3: 388479931
+      guyWalk-Sheet_4: -823737730
+      guyWalk-Sheet_5: 499785241
+      guyWalk-Sheet_6: -1010192352
+      guyWalk-Sheet_7: -1938365193
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -87,7 +87,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
             {
                 if (playerHeight * squashThresholdMultiplier >= enemyHeight)
                 {
-                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage + 10000);
+                    collision.gameObject.GetComponent<BossScript>().TakeDamage(dashDamage + 100000);
                 }
                 else
                 {
@@ -108,7 +108,6 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Udaren batko");
         currentHealth -= damage;
         SmallHedge.SoundManager.PlaySound(SoundType.DMGTAKEN, null, (float) 0.6);
         healthBar.SetHealth(currentHealth);

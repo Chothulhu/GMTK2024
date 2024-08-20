@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool canDash = true;
     [HideInInspector] public bool isDashing;
     [SerializeField] private float dashingForce = 24f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashingCooldown = 0f;
+    [SerializeField] private float dashingTime = 0.12f;
+    [SerializeField] private float dashingCooldown = 3f;
     [SerializeField] private BoxCollider2D hitBox;
 
 
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             if (IsGrounded() || canDoubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingForce);
-
+                anim.SetTrigger("Jump");
                 canDoubleJump = !canDoubleJump;
             }
                 
@@ -71,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && canDash)
-        {
-            weapon.SetActive(false);
+        { 
             anim.SetBool("isDashing", true);
             StartCoroutine(Dash());
         }
@@ -90,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing) return;
 
         float velocityX = !isForceDown ? horizontal * speed : 0;
-
+        anim.SetFloat("walkSpeed", Mathf.Abs(velocityX));
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
 
         if (isForceDown)
@@ -110,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        canDash = true;
         return isGrounded;
     }
 
@@ -132,8 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        
-        
+        weapon.SetActive(false);
         SmallHedge.SoundManager.PlaySound(SoundType.DASH, null, (float) 0.1);
         canDash = false;
         isDashing = true;
@@ -147,11 +144,14 @@ public class PlayerMovement : MonoBehaviour
         hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        //weapon.SetActive(true);
         rb.excludeLayers += LayerMask.GetMask("Boss");
-        weapon.SetActive(true);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        
+    }
 
+    public void TurnOnWeapon()
+    {
+        weapon.SetActive(true);
     }
 }

@@ -29,6 +29,9 @@ public class BossScript : MonoBehaviour
     private bool isNegativeScaling = false;
     [SerializeField] private GameObject bloodParticles;
     [SerializeField] private Transform bloodParticlesPosition;
+    [SerializeField] private GameObject victoryScreen;
+
+    public Animator anim;
 
     private void Awake()
     {
@@ -67,21 +70,21 @@ public class BossScript : MonoBehaviour
         {
             if (!isCasting)
             {
-                rand = UnityEngine.Random.Range(0, 2);
+                rand = UnityEngine.Random.Range(0, 3);
 
                 switch (rand)
                 {
                     case 0:
                         isCasting = true;
-                        CastFirstAbility();
+                        anim.SetTrigger("CastFirst");
                         break;
                     case 1:
                         isCasting = true;
-                        CastSecondAbility();
+                        anim.SetTrigger("CastSecond");
                         break;
                     case 2:
                         isCasting = true;
-                        CastThirdAbility();
+                        anim.SetTrigger("CastThird");
                         break;
                     default:
                         break;
@@ -92,7 +95,7 @@ public class BossScript : MonoBehaviour
         }
 
 
-        // TEST
+        /*// TEST
         if (Input.GetKeyDown(KeyCode.E))
         {
             CastFirstAbility();
@@ -106,7 +109,7 @@ public class BossScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             CastThirdAbility();
-        }
+        }*/
     }
 
     public void TriggerScaling(Boolean isPositiveScaling, Transform position = null)
@@ -231,6 +234,7 @@ public class BossScript : MonoBehaviour
 
     private void Die()
     {
+        victoryScreen.SetActive(true);
         Debug.Log("GameOver");
     }
 }
