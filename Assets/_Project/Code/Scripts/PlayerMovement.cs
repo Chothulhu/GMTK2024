@@ -71,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && canDash)
-        {
-            weapon.SetActive(false);
+        { 
             anim.SetBool("isDashing", true);
             StartCoroutine(Dash());
         }
@@ -131,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        weapon.SetActive(false);
         SmallHedge.SoundManager.PlaySound(SoundType.DASH, null, (float) 0.1);
         canDash = false;
         isDashing = true;
@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         hitBox.isTrigger = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
-        weapon.SetActive(true);
+        //weapon.SetActive(true);
         rb.excludeLayers += LayerMask.GetMask("Boss");
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;

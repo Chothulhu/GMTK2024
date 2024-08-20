@@ -19,7 +19,6 @@ public class EnemyCombatScript : MonoBehaviour
         var entity = collision.GetComponent<DamagableEntity>();
         if (entity != null)
         {
-            Debug.Log("Te Aknem poziv!");
             // Animator
             if (animator != null && !inAnimation)
             {
