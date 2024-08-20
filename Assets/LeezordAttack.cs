@@ -54,6 +54,7 @@ public class LeezordAttack : MonoBehaviour
     {
         Debug.Log("Boom");
         SmallHedge.SoundManager.PlaySound(SoundType.EXPLOSION, null, 0.6f);
+        anim.SetTrigger("Explode");
         // Detect damagable entities
         Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layerToDamage);
 
@@ -62,7 +63,11 @@ public class LeezordAttack : MonoBehaviour
             Debug.Log("Te Aknem!" + entity.name);
             entity.GetComponent<DamagableEntity>().TakeDamage(damage);
         }
-        inAnimation = false;
-        enemyScript.Die();   
+        inAnimation = false; 
+    }
+
+    public void RemoveLeezrd()
+    {
+        enemyScript.Die();
     }
 }
