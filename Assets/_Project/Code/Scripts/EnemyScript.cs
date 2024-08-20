@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using SmallHedge;
+using UnityEditor.Tilemaps;
 
 public class EnemyScript : MonoBehaviour, DamagableEntity
 {
@@ -12,6 +13,8 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     [SerializeField] private float speed;
     private GameObject globals;
     private Transform target;
+    [SerializeField] private bool isFacingRightAtStart;
+    [SerializeField] private bool isFacingRight;
 
     [SerializeField] private GameObject itemToDrop;
 
@@ -56,6 +59,9 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
             // Increase the scale by X unit per second
             transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime;
         }
+
+        FlipSprite();
+        
     }
 
     public void TakeDamage(int damage)
@@ -103,6 +109,32 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
         isPositiveScaling = true;
         yield return new WaitForSeconds(duration); // Wait for the specified duration
         isPositiveScaling = false;
+    }
+
+    private void FlipSprite()
+    {
+        var diff = target.position - transform.position;
+        if (isFacingRightAtStart)
+        {
+            if (isFacingRight && diff.x > 0f || !isFacingRight && diff.x < 0f)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+        } 
+        else
+        {
+            if (isFacingRight && diff.x < 0f || !isFacingRight && diff.x > 0f)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+        }
+        
     }
 
     public void Die()

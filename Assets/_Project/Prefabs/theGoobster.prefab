@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   speed: 3
+  isFacingRightAtStart: 0
+  isFacingRight: 0
   itemToDrop: {fileID: 1911869002982079505, guid: 3bbc6d4ef56cef54ab616086b74de3e6, type: 3}
   scaleSpeed: 0.05
   scaleLast: 2
