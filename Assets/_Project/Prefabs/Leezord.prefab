@@ -205,6 +205,10 @@ MonoBehaviour:
   scaleMin: 0.4
   bloodParticles: {fileID: 0}
   bloodParticlesPosition: {fileID: 0}
+  bloodSplatter:
+  - {fileID: 2064335277991358608, guid: 5a35be367bcd1e54a8d3ae241b9e96c7, type: 3}
+  - {fileID: 8231929565626251525, guid: 214a92dde99c9b84c9fe8dcd96633265, type: 3}
+  - {fileID: 4734452532913189240, guid: 87c2bce4dac1a2247b61bd6466922cc9, type: 3}
 --- !u!114 &-6224854261796929413
 MonoBehaviour:
   m_ObjectHideFlags: 0

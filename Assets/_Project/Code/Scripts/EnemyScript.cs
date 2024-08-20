@@ -28,6 +28,7 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     [SerializeField] private float scaleMin = 0.4f;
     [SerializeField] private GameObject bloodParticles;
     [SerializeField] private Transform bloodParticlesPosition;
+    [SerializeField] private GameObject[] bloodSplatter;
 
     private void Awake()
     {
@@ -135,7 +136,9 @@ public class EnemyScript : MonoBehaviour, DamagableEntity
     public void Die()
     {
         Debug.Log("DIED: " + gameObject.name);
+        var id =  UnityEngine.Random.Range(0, bloodSplatter.Length);
         Instantiate(bloodParticlesExplosion, transform.position, Quaternion.identity);
+        Instantiate(bloodSplatter[id], transform.position - new Vector3(0, 0.8f, 0), Quaternion.identity);
         ObjectPoolManager.SpawnObject(itemToDrop, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObject);
         ObjectPoolManager.ReturnObjectToPool(gameObject);
     }

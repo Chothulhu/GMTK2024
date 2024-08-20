@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7592696465900552304}
   - component: {fileID: -2306079938791802754}
   m_Layer: 0
-  m_Name: Blood
+  m_Name: explodeBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
