@@ -109,7 +109,7 @@ public class BossScript : MonoBehaviour
         }
     }
 
-    public void TriggerScaling(Boolean isPositiveScaling)
+    public void TriggerScaling(Boolean isPositiveScaling, Transform position = null)
     {
         if (isPositiveScaling)
         {
@@ -117,7 +117,7 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ScaleNegativeForSeconds(scaleLast));
+            StartCoroutine(ScaleNegativeForSeconds(scaleLast, position));
         }
     }
 
@@ -185,10 +185,10 @@ public class BossScript : MonoBehaviour
     }
 
     // Method to trigger the scaling for 10 seconds
-    private IEnumerator ScaleNegativeForSeconds(int duration)
+    private IEnumerator ScaleNegativeForSeconds(int duration, Transform spawnPosition)
     {
         //fml (zaustavimo particleSystem da bi postavili duzinu trajanja kao i za scalingDown)
-        var particle = ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
+        var particle = ObjectPoolManager.SpawnObject(bloodParticles, spawnPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
         particle.transform.SetParent(gameObject.transform);
         var particleSystem = particle.GetComponent<ParticleSystem>();
         particleSystem.Stop();
@@ -196,7 +196,7 @@ public class BossScript : MonoBehaviour
         main.duration = duration;
         particleSystem.Play();
 
-        ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
+        //ObjectPoolManager.SpawnObject(bloodParticles, bloodParticlesPosition.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystem);
         isNegativeScaling = true;
         yield return new WaitForSeconds(duration); // Wait for the specified duration
         isNegativeScaling = false;

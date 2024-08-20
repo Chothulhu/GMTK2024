@@ -8,14 +8,19 @@ public class BossWeakPointScript : MonoBehaviour, DamagableEntity
 
     public void TakeDamage(int damage)
     {
-        InvokeScale();
+
     }
 
-    private void InvokeScale()
+    public void TakeDamage(int damage, Transform position)
+    {
+        InvokeScale(position);
+    }
+
+    private void InvokeScale(Transform position)
     {
         if (bossScript != null)
         {
-            bossScript.TriggerScaling(false);
+            bossScript.TriggerScaling(false, position);
         }
     }
 }

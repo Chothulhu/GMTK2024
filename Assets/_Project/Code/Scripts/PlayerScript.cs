@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour, DamagableEntity
 
     private int currentHealth = 100;
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int dashDamage = 100;
+    [SerializeField] private int dashDamage = 10;
 
     private SpriteRenderer spriteRenderer;
     private float squashThresholdMultiplier = 0.9f; // Determines how small should an enemy be for killing via stomp mechanic

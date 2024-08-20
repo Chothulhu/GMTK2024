@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
     public Rigidbody2D rb;
     public int damage = 40;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -30,9 +30,17 @@ public class BulletScript : MonoBehaviour
         var enemy = collision.GetComponent<DamagableEntity>();
         if (enemy != null)
         {
-            Debug.Log("TONS OF DMG");
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (collision.tag == "BossWeakPoint")
+            {
+                collision.GetComponent<BossWeakPointScript>().TakeDamage(damage, transform);
+                ObjectPoolManager.ReturnObjectToPool(gameObject);
+            }
+            else if (collision.tag != "Player")
+            {
+                Debug.Log("TONS OF DMG");
+                enemy.TakeDamage(damage);
+                ObjectPoolManager.ReturnObjectToPool(gameObject);
+            }    
         }
        
     }

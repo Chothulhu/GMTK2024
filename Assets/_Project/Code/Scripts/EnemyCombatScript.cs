@@ -8,37 +8,30 @@ public class EnemyCombatScript : MonoBehaviour
     [SerializeField] LayerMask layerToDamage;
     [SerializeField] private int damage;
     [SerializeField] private float attackAnimationDelay;
+    private bool inAnimation = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        inAnimation = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         var entity = collision.GetComponent<DamagableEntity>();
         if (entity != null)
         {
             Debug.Log("Te Aknem poziv!");
             // Animator
-            if (animator != null)
+            if (animator != null && !inAnimation)
+            {
+                inAnimation = true;
                 animator.SetTrigger("Attack");
+            }
+                
         }
-
     }
 
     void Attack() {
-
-        
-
         // Detect damagable entities
         Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layerToDamage);
 
@@ -46,7 +39,12 @@ public class EnemyCombatScript : MonoBehaviour
             Debug.Log("Te Aknem!" + entity.name);
             entity.GetComponent<DamagableEntity>().TakeDamage(damage);
         }
+        
+    }
 
+    void EndAnimation()
+    {
+        inAnimation = false;
     }
 
     private void OnDrawGizmosSelected()

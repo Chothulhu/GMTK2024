@@ -11,6 +11,8 @@ TagManager:
   - Ammo
   - Boss
   - Shockwave
+  - BossWeakPoint
+  - Sign
   layers:
   - Default
   - TransparentFX

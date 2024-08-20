@@ -19,7 +19,6 @@ public class ShockwaveScript : MonoBehaviour
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +26,6 @@ public class ShockwaveScript : MonoBehaviour
         var enemy = collision.GetComponent<DamagableEntity>();
         if (enemy != null)
         {
-            Debug.Log("TONS OF DMG");
             enemy.TakeDamage(damage);
         }
     }
