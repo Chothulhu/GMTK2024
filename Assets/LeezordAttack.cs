@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SmallHedge;
 
 public class LeezordAttack : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class LeezordAttack : MonoBehaviour
     public void LeezordExplode()
     {
         Debug.Log("Boom");
+        SmallHedge.SoundManager.PlaySound(SoundType.EXPLOSION, null, 0.6f);
         // Detect damagable entities
         Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layerToDamage);
 
