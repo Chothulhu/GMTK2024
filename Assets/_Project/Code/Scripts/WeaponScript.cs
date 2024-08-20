@@ -47,6 +47,7 @@ public class WeaponScript : MonoBehaviour
     }
 
     void Shoot() {
+        CinemachineScreenShake.Instance.ShakeCamera(2f, 0.1f);
         ObjectPoolManager.SpawnObject(bulletPrefab, firePoint.position, firePoint.rotation, ObjectPoolManager.PoolType.GameObject);
     }
 
