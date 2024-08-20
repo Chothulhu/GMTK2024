@@ -595,7 +595,7 @@ Transform:
   m_GameObject: {fileID: 253238808}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.83, y: 0.35599995, z: -10}
+  m_LocalPosition: {x: -31.96, y: 0.35599995, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.8
+  m_fontSize: 36.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512e9d777f01b24fb2c1b74b3f7a041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStart: 0
 --- !u!1 &419991817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1408,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.418118, y: 0, z: -10}
+  m_LocalPosition: {x: -20.265627, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1749,6 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512e9d777f01b24fb2c1b74b3f7a041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStart: 0
 --- !u!1 &598697301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1973,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.2
+  m_fontSize: 36.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2426,6 +2428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512e9d777f01b24fb2c1b74b3f7a041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStart: 0
 --- !u!1 &738096350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3161,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.8
+  m_fontSize: 36.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3382,10 +3385,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 23, y: 6}
-      - {x: -23, y: 6}
-      - {x: -23, y: -6}
-      - {x: 23, y: -6}
+    - - {x: 33, y: 6}
+      - {x: -33, y: 6}
+      - {x: -33, y: -6}
+      - {x: 33, y: -6}
   m_UseDelaunayMesh: 0
 --- !u!1 &1038244704
 GameObject:
@@ -4011,7 +4014,7 @@ Transform:
   m_GameObject: {fileID: 1217890990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.83, y: -3.144, z: 0}
+  m_LocalPosition: {x: -31.96, y: -3.144, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4290,6 +4293,8 @@ MonoBehaviour:
   scaleMin: 0.1
   bloodParticles: {fileID: 3573644588782310734, guid: fe6c69bb600a4844f849d1c1f22975fb, type: 3}
   bloodParticlesPosition: {fileID: 668286465}
+  victoryScreen: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!50 &1235846383
 Rigidbody2D:
   serializedVersion: 4
@@ -4789,7 +4794,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.55
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5256,9 +5261,10 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 367321589}
   - {fileID: 324966332}
-  requiredProgress: 5
+  requiredProgress: 30
   progressBar: {fileID: 108234166}
   bossWarningCanvas: {fileID: 601796006}
+  isStart: 0
 --- !u!4 &1743447729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2866404312011303859, guid: a36dc9a7dd1bfd64384858dc4bb81ed6, type: 3}
@@ -5385,7 +5391,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.55
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5646,6 +5652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512e9d777f01b24fb2c1b74b3f7a041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStart: 0
 --- !u!1 &1890312515
 GameObject:
   m_ObjectHideFlags: 0
